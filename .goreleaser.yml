@@ -1,0 +1,53 @@
+release:
+  github:
+    owner: knqyf263
+    name: utern
+  name_template: '{{.Tag}}'
+brew:
+  github:
+    owner: knqyf263
+    name: homebrew-utern
+  commit_author:
+    name: goreleaserbot
+    email: goreleaser@carlosbecker.com
+  description: "Multi group and stream log tailing for AWS CloudWatch Logs"
+  homepage: "https://github.com/knqyf263/utern"
+  install: |
+    bin.install Dir['utern']
+  test: |
+    system "#{bin}/utern"
+builds:
+- goos:
+  - linux
+  - darwin
+  goarch:
+  - amd64
+  - "386"
+  - windows
+  goarm:
+  - "6"
+  main: .
+  ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+archive:
+  format: zip
+  name_template: '{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+  files:
+  - LICENSE*
+  - README*
+  - CHANGELOG*
+nfpm:
+  name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+  replacements:
+    amd64: 64-bit
+    386: 32-bit
+    darwin: macOS
+    linux: Tux
+  vendor: knqyf263
+  homepage: https://github.com/knqyf263/utern
+  maintainer: Teppei Fukuda <knqyf263@gmail.com>
+  license: MIT
+  formats:
+  - deb
+  - rpm
+checksum:
+  name_template: '{{ .ProjectName }}_{{ .Version }}_checksums.txt'
