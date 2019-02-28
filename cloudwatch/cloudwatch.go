@@ -90,7 +90,7 @@ func (cwl *Client) Tail(ctx context.Context) error {
 		s.Start()
 		s.Suffix = " Fetching log streams..."
 
-		streams, err := cwl.ListStreams(logGroupName, cwl.config.StartTime.Unix()*1000)
+		streams, err := cwl.ListStreams(ctx, logGroupName, cwl.config.StartTime.Unix()*1000)
 		if err != nil {
 			return errors.Wrap(err, "Initial check failed")
 		}
@@ -165,7 +165,7 @@ func (cwl *Client) tail(ctx context.Context, logGroupName string,
 		case <-start:
 		}
 
-		streams, err := cwl.ListStreams(logGroupName, *lastSeenTime)
+		streams, err := cwl.ListStreams(ctx, logGroupName, *lastSeenTime)
 		if err != nil {
 			return err
 		}

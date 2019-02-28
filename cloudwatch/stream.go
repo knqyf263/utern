@@ -1,6 +1,7 @@
 package cloudwatch
 
 import (
+	"context"
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -16,7 +17,7 @@ type LogStream struct {
 }
 
 // ListStreams lists stream names matching the specified filter
-func (cwl *Client) ListStreams(groupName string, since int64) (streams []*LogStream, err error) {
+func (cwl *Client) ListStreams(ctx context.Context, groupName string, since int64) (streams []*LogStream, err error) {
 	// If LogStreamNamePrefix is specified, log streams can not be sorted by LastEventTimestamp.
 	// https://docs.aws.amazon.com/sdk-for-go/api/service/cloudwatchlogs/#DescribeLogStreamsInput
 	if cwl.config.LogStreamNamePrefix != "" {
@@ -54,7 +55,7 @@ func (cwl *Client) ListStreams(groupName string, since int64) (streams []*LogStr
 		input.Descending = aws.Bool(true)
 	}
 
-	err = cwl.client.DescribeLogStreamsPages(input, fn)
+	err = cwl.client.DescribeLogStreamsPagesWithContext(ctx, input, fn)
 	if err != nil {
 		if awsErr, ok := err.(awserr.Error); ok {
 			if awsErr.Code() == "ResourceNotFoundException" {
