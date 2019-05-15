@@ -41,6 +41,11 @@ func main() {
 			Usage: "Return logs older than a relative duration like 0, 2m, or 3h.",
 		},
 		cli.StringFlag{
+			Name:  "region, r",
+			Value: "",
+			Usage: "Specify an AWS region.",
+		},
+		cli.StringFlag{
 			Name:  "filter",
 			Value: "",
 			Usage: "The filter pattern to use. For more information, see https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html.",
