@@ -49,6 +49,9 @@ func NewClient(conf *config.Config) *Client {
 
 // Tail tails log
 func (cwl *Client) Tail(ctx context.Context) error {
+	if cwl.config.Color {
+		c.NoColor = false
+	}
 	start := make(chan struct{}, 1)
 	ch := make(chan *logEvent, 1000)
 	errch := make(chan error)

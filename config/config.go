@@ -22,6 +22,7 @@ type Config struct {
 	NoLogGroupName      bool
 	NoLogStreamName     bool
 	MaxLength           int
+	Color               bool
 }
 
 // New returns Config
@@ -82,6 +83,7 @@ func New(c *cli.Context) (*Config, error) {
 		NoLogGroupName:      c.Bool("no-log-group"),
 		NoLogStreamName:     c.Bool("no-log-stream"),
 		MaxLength:           c.Int("max-length"),
+		Color:               c.Bool("color"),
 	}
 
 	return config, nil
