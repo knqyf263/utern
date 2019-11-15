@@ -66,6 +66,10 @@ func main() {
 			Value: 0,
 			Usage: "Maximum log message length",
 		},
+		cli.BoolFlag{
+			Name:  "color",
+			Usage: "Force color output even if not a tty",
+		},
 	}
 
 	app.Action = func(c *cli.Context) error {
