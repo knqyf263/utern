@@ -50,12 +50,12 @@ The log-group-query is a regular expression so you could provide "web-\w" to tai
 # Installation
 ## From source
 
-```sh
+```console
 $ go get -u github.com/knqyf263/utern
 ```
 
 ## Binary (Including Windows)
-Go to [the releases page](https://github.com/knqyf263/utern/releases), find the version you want, and download the zip file. Unpack the zip file, and put the binary to somewhere you want (on UNIX-y systems, /usr/local/bin or the like). Make sure it has execution bits turned on. 
+Go to [the releases page](https://github.com/knqyf263/utern/releases), find the version you want, and download the zip file. Unpack the zip file, and put the binary to somewhere you want (on UNIX-y systems, /usr/local/bin or the like). Make sure it has execution bits turned on.
 
 ## Mac OS X / Homebrew
 You can use homebrew on OS X.
@@ -90,70 +90,70 @@ Some examples are shown below.
 
 ### List all log groups
 
-```sh
+```console
 $ aws logs describe-log-groups --query "logGroups[].[logGroupName]" --output text
 ```
 
 ### List all log streams
 
-```sh
+```console
 $ aws logs describe-log-streams --log-group-name log-group-name --query "logStreams[].[logStreamName]" --output text
 
 ```
 
 ### All log streams
 
-```sh
+```console
 $ utern log-group-query
 ```
 
 ### Filter log groups with regular expressions
 
-```sh
+```console
 $ utern "web-\w"
 ```
 
 ### Filter log streams with regular expressions (--stream, -n)
 
-```sh
+```console
 $ utern --stream log-stream-query log-group-query
 ```
 
 ### Filter log streams with a prefix of log stream name (--stream-prefix, -p)
 If the log group has many log streams, `--stream-prefix` will be faster than `--stream`.
 
-```sh
+```console
 $ utern --stream-prefix log-stream-prefix log-group-query
 ```
 
 ### Filter log streams with a prefix and regular expressions
 
-```sh
+```console
 $ utern -p log-stream-prefix -n log-stream-query log-group-query
 ```
 
 ### Logs after 1 hour ago (--since, -s)
 
-```sh
+```console
 $ utern --since 1h log-group-query
 ```
 
 ### Logs after 2019-01-02 03:04:05 UTC
 RFC3339
 
-```sh
+```console
 $ utern --since 2019-01-02T03:04:05Z log-group-query
 ```
 
 ### Logs from 10 minutes ago to 5 minutes ago
 
-```sh
+```console
 $ utern --since 10m --end 5m log-group-query
 ```
 
 # Usage
 
-```sh
+```console
 NAME:
    utern - Multi group and stream log tailing for AWS CloudWatch Logs
 
@@ -169,14 +169,16 @@ COMMANDS:
 GLOBAL OPTIONS:
    --stream value, -n value         Log stream name (regular expression). Displays all if omitted.
    --stream-prefix value, -p value  Log stream name prefix. If a log group contains many log streams, this option makesit faster.
-   --since value, -s value          Return logs newer than a relative duration like 52, 2m, or 3h. (default: "72h")
+   --since value, -s value          Return logs newer than a relative duration like 52, 2m, or 3h. (default: "5m")
    --end value, -e value            Return logs older than a relative duration like 0, 2m, or 3h.
+   --region value, -r value         Specify an AWS region.
    --filter value                   The filter pattern to use. For more information, see https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html.
    --timestamps                     Print timestamps
    --event-id                       Print event ID
    --no-log-group                   Suppress display of log group name
    --no-log-stream                  Suppress display of log stream name
    --max-length value               Maximum log message length (default: 0)
+   --color                          Force color output even if not a tty
    --help, -h                       show help
    --version, -v                    print the version
 
