@@ -35,6 +35,7 @@ archive:
   - LICENSE*
   - README*
   - CHANGELOG*
+  - CREDITS
 nfpm:
   name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
   replacements:
