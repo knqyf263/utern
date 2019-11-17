@@ -2,6 +2,7 @@ package cloudwatch
 
 import (
 	"context"
+	"math"
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -26,7 +27,11 @@ func (cwl *Client) ListStreams(ctx context.Context, groupName string, since int6
 	streams = []*LogStream{}
 	fn := func(res *cloudwatchlogs.DescribeLogStreamsOutput, lastPage bool) bool {
 		hasUpdatedStream := false
+		minLastIngestionTime := int64(math.MaxInt64)
 		for _, stream := range res.LogStreams {
+			if *stream.LastIngestionTime < minLastIngestionTime {
+				minLastIngestionTime = *stream.LastIngestionTime
+			}
 			if !cwl.config.LogStreamNameFilter.MatchString(*stream.LogStreamName) {
 				continue
 			}
@@ -41,6 +46,9 @@ func (cwl *Client) ListStreams(ctx context.Context, groupName string, since int6
 			})
 		}
 		if cwl.config.LogStreamNamePrefix != "" {
+			return true
+		}
+		if minLastIngestionTime >= since {
 			return true
 		}
 		return hasUpdatedStream
