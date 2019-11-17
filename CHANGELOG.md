@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.0.3](https://github.com/knqyf263/utern/compare/v0.0.2...v0.0.3) (2019-11-18)
+
+* add Makefile and introduce godzil for releng [#11](https://github.com/knqyf263/utern/pull/11) ([Songmu](https://github.com/Songmu))
+
 ## [v0.0.2](https://github.com/knqyf263/utern/compare/v0.0.1...v0.0.2) (2019-11-18)
 
 * update dependencies and add CREDITS file [#9](https://github.com/knqyf263/utern/pull/9) ([Songmu](https://github.com/Songmu))
