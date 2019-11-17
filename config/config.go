@@ -17,11 +17,13 @@ type Config struct {
 	LogStreamNameFilter *regexp.Regexp
 	LogStreamNamePrefix string
 	FilterPattern       string
+	Region              string
 	Timestamps          bool
 	EventID             bool
 	NoLogGroupName      bool
 	NoLogStreamName     bool
 	MaxLength           int
+	Color               bool
 }
 
 // New returns Config
@@ -77,11 +79,13 @@ func New(c *cli.Context) (*Config, error) {
 		LogStreamNameFilter: regexp.MustCompile(logStreamName),
 		LogStreamNamePrefix: c.String("stream-prefix"),
 		FilterPattern:       c.String("filter"),
+		Region:              c.String("region"),
 		Timestamps:          c.Bool("timestamps"),
 		EventID:             c.Bool("event-id"),
 		NoLogGroupName:      c.Bool("no-log-group"),
 		NoLogStreamName:     c.Bool("no-log-stream"),
 		MaxLength:           c.Int("max-length"),
+		Color:               c.Bool("color"),
 	}
 
 	return config, nil

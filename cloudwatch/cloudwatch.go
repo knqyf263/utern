@@ -39,6 +39,9 @@ type logEvent struct {
 func NewClient(conf *config.Config) *Client {
 	opts := session.Options{
 		SharedConfigState: session.SharedConfigEnable,
+		Config: aws.Config{
+			Region: aws.String(conf.Region),
+		},
 	}
 	sess := session.Must(session.NewSessionWithOptions(opts))
 	return &Client{
@@ -49,6 +52,9 @@ func NewClient(conf *config.Config) *Client {
 
 // Tail tails log
 func (cwl *Client) Tail(ctx context.Context) error {
+	if cwl.config.Color {
+		c.NoColor = false
+	}
 	start := make(chan struct{}, 1)
 	ch := make(chan *logEvent, 1000)
 	errch := make(chan error)
@@ -90,7 +96,7 @@ func (cwl *Client) Tail(ctx context.Context) error {
 		s.Start()
 		s.Suffix = " Fetching log streams..."
 
-		streams, err := cwl.ListStreams(logGroupName, cwl.config.StartTime.Unix()*1000)
+		streams, err := cwl.ListStreams(ctx, logGroupName, cwl.config.StartTime.Unix()*1000)
 		if err != nil {
 			return errors.Wrap(err, "Initial check failed")
 		}
@@ -165,7 +171,7 @@ func (cwl *Client) tail(ctx context.Context, logGroupName string,
 		case <-start:
 		}
 
-		streams, err := cwl.ListStreams(logGroupName, *lastSeenTime)
+		streams, err := cwl.ListStreams(ctx, logGroupName, *lastSeenTime)
 		if err != nil {
 			return err
 		}
