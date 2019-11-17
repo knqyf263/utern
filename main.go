@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 	"os/signal"
@@ -13,11 +14,15 @@ import (
 	"github.com/urfave/cli"
 )
 
+const version = "0.0.2"
+
+var commit string
+
 func main() {
 	app := cli.NewApp()
 	app.Name = "utern"
 	app.Usage = "Multi group and stream log tailing for AWS CloudWatch Logs"
-	app.Version = "0.0.1"
+	app.Version = fmt.Sprintf("%s (rev:%s)", version, commit)
 
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
