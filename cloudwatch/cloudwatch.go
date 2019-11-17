@@ -39,6 +39,9 @@ type logEvent struct {
 func NewClient(conf *config.Config) *Client {
 	opts := session.Options{
 		SharedConfigState: session.SharedConfigEnable,
+		Config: aws.Config{
+			Region: aws.String(conf.Region),
+		},
 	}
 	sess := session.Must(session.NewSessionWithOptions(opts))
 	return &Client{
