@@ -93,6 +93,7 @@ func (cwl *Client) Tail(ctx context.Context) error {
 		}
 
 		s := spinner.New(spinner.CharSets[14], 100*time.Millisecond)
+		s.Writer = os.Stderr
 		s.Start()
 		s.Suffix = " Fetching log streams..."
 
