@@ -1,6 +1,7 @@
 package cloudwatch
 
 import (
+	"os"
 	"time"
 
 	"github.com/aws/aws-sdk-go/service/cloudwatchlogs"
@@ -11,6 +12,7 @@ import (
 // ListGroups lists group names matching the specified filter
 func (cwl *Client) ListGroups() (groupNames []string, err error) {
 	s := spinner.New(spinner.CharSets[14], 100*time.Millisecond)
+	s.Writer = os.Stderr
 	s.Start()
 	s.Suffix = " Fetching log groups..."
 	defer s.Stop()
