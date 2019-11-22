@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.0.4](https://github.com/knqyf263/utern/compare/v0.0.3...v0.0.4) (2019-11-22)
+
+* Fix spinner output to stderr [#12](https://github.com/knqyf263/utern/pull/12) ([kawaz](https://github.com/kawaz))
+
 ## [v0.0.3](https://github.com/knqyf263/utern/compare/v0.0.2...v0.0.3) (2019-11-18)
 
 * add Makefile and introduce godzil for releng [#11](https://github.com/knqyf263/utern/pull/11) ([Songmu](https://github.com/Songmu))
