@@ -46,6 +46,20 @@ func main() {
 			Usage: "Return logs older than a relative duration like 0, 2m, or 3h.",
 		},
 		cli.StringFlag{
+			Name:  "profile",
+			Value: "",
+			Usage: "Specify an AWS profile.",
+		},
+		cli.BoolFlag{
+			Name:  "mfa",
+			Usage: "Specify if MFA authentication via stdin is used.",
+		},
+		cli.StringFlag{
+			Name:  "code",
+			Value: "",
+			Usage: "Specify MFA token code directly, if supplied mfa flag can be omitted.",
+		},
+		cli.StringFlag{
 			Name:  "region, r",
 			Value: "",
 			Usage: "Specify an AWS region.",

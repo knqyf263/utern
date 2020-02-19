@@ -11,6 +11,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
+	"github.com/aws/aws-sdk-go/aws/credentials/stscreds"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cloudwatchlogs"
 	"github.com/briandowns/spinner"
@@ -42,6 +43,14 @@ func NewClient(conf *config.Config) *Client {
 		Config: aws.Config{
 			Region: aws.String(conf.Region),
 		},
+	}
+	if conf.Profile != "" {
+		opts.Profile = conf.Profile
+	}
+	if conf.MFA && conf.Code == "" {
+		opts.AssumeRoleTokenProvider = stscreds.StdinTokenProvider
+	} else if conf.Code != "" {
+		opts.AssumeRoleTokenProvider = func() (string, error) { return conf.Code, nil }
 	}
 	sess := session.Must(session.NewSessionWithOptions(opts))
 	return &Client{
