@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.0.5](https://github.com/knqyf263/utern/compare/v0.0.4...v0.0.5) (2020-02-20)
+
+* feat: add flags to specify aws profile and usage of MFA [#14](https://github.com/knqyf263/utern/pull/14) ([anzellai](https://github.com/anzellai))
+* introduce GitHub Actions [#10](https://github.com/knqyf263/utern/pull/10) ([Songmu](https://github.com/Songmu))
+
 ## [v0.0.4](https://github.com/knqyf263/utern/compare/v0.0.3...v0.0.4) (2019-11-22)
 
 * Fix spinner output to stderr [#12](https://github.com/knqyf263/utern/pull/12) ([kawaz](https://github.com/kawaz))
