@@ -50,14 +50,10 @@ func main() {
 			Value: "",
 			Usage: "Specify an AWS profile.",
 		},
-		cli.BoolFlag{
-			Name:  "mfa",
-			Usage: "Specify if MFA authentication via stdin is used.",
-		},
 		cli.StringFlag{
 			Name:  "code",
 			Value: "",
-			Usage: "Specify MFA token code directly, if supplied mfa flag can be omitted.",
+			Usage: "Specify MFA token code directly (if applicable), instead of using stdin.",
 		},
 		cli.StringFlag{
 			Name:  "region, r",

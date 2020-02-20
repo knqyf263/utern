@@ -18,7 +18,6 @@ type Config struct {
 	LogStreamNamePrefix string
 	FilterPattern       string
 	Profile             string
-	MFA                 bool
 	Code                string
 	Region              string
 	Timestamps          bool
@@ -83,7 +82,6 @@ func New(c *cli.Context) (*Config, error) {
 		LogStreamNamePrefix: c.String("stream-prefix"),
 		FilterPattern:       c.String("filter"),
 		Profile:             c.String("profile"),
-		MFA:                 c.Bool("mfa"),
 		Code:                c.String("code"),
 		Region:              c.String("region"),
 		Timestamps:          c.Bool("timestamps"),

@@ -40,17 +40,18 @@ type logEvent struct {
 func NewClient(conf *config.Config) *Client {
 	opts := session.Options{
 		SharedConfigState: session.SharedConfigEnable,
+		AssumeRoleTokenProvider: func() (string, error) {
+			if conf.Code != "" {
+				return conf.Code, nil
+			}
+			return stscreds.StdinTokenProvider()
+		},
 		Config: aws.Config{
 			Region: aws.String(conf.Region),
 		},
 	}
 	if conf.Profile != "" {
 		opts.Profile = conf.Profile
-	}
-	if conf.MFA && conf.Code == "" {
-		opts.AssumeRoleTokenProvider = stscreds.StdinTokenProvider
-	} else if conf.Code != "" {
-		opts.AssumeRoleTokenProvider = func() (string, error) { return conf.Code, nil }
 	}
 	sess := session.Must(session.NewSessionWithOptions(opts))
 	return &Client{
