@@ -17,6 +17,8 @@ type Config struct {
 	LogStreamNameFilter *regexp.Regexp
 	LogStreamNamePrefix string
 	FilterPattern       string
+	Profile             string
+	Code                string
 	Region              string
 	Timestamps          bool
 	EventID             bool
@@ -79,6 +81,8 @@ func New(c *cli.Context) (*Config, error) {
 		LogStreamNameFilter: regexp.MustCompile(logStreamName),
 		LogStreamNamePrefix: c.String("stream-prefix"),
 		FilterPattern:       c.String("filter"),
+		Profile:             c.String("profile"),
+		Code:                c.String("code"),
 		Region:              c.String("region"),
 		Timestamps:          c.Bool("timestamps"),
 		EventID:             c.Bool("event-id"),

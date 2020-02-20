@@ -11,6 +11,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
+	"github.com/aws/aws-sdk-go/aws/credentials/stscreds"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cloudwatchlogs"
 	"github.com/briandowns/spinner"
@@ -39,9 +40,18 @@ type logEvent struct {
 func NewClient(conf *config.Config) *Client {
 	opts := session.Options{
 		SharedConfigState: session.SharedConfigEnable,
+		AssumeRoleTokenProvider: func() (string, error) {
+			if conf.Code != "" {
+				return conf.Code, nil
+			}
+			return stscreds.StdinTokenProvider()
+		},
 		Config: aws.Config{
 			Region: aws.String(conf.Region),
 		},
+	}
+	if conf.Profile != "" {
+		opts.Profile = conf.Profile
 	}
 	sess := session.Must(session.NewSessionWithOptions(opts))
 	return &Client{
