@@ -4,18 +4,18 @@ release:
     name: utern
   name_template: '{{.Tag}}'
 brews:
-  github:
-    owner: knqyf263
-    name: homebrew-utern
-  commit_author:
-    name: goreleaserbot
-    email: goreleaser@carlosbecker.com
-  description: "Multi group and stream log tailing for AWS CloudWatch Logs"
-  homepage: "https://github.com/knqyf263/utern"
-  install: |
-    bin.install Dir['utern']
-  test: |
-    system "#{bin}/utern"
+  - github:
+      owner: knqyf263
+      name: homebrew-utern
+    commit_author:
+      name: goreleaserbot
+      email: goreleaser@carlosbecker.com
+    description: "Multi group and stream log tailing for AWS CloudWatch Logs"
+    homepage: "https://github.com/knqyf263/utern"
+    install: |
+      bin.install Dir['utern']
+    test: |
+      system "#{bin}/utern"
 builds:
 - goos:
   - linux
@@ -27,26 +27,26 @@ builds:
   main: .
   ldflags: -s -w -X main.commit={{.Commit}}
 archives:
-  format: zip
-  name_template: '{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
-  files:
-  - LICENSE*
-  - README*
-  - CHANGELOG*
-  - CREDITS
+  - format: zip
+    name_template: '{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+    files:
+    - LICENSE*
+    - README*
+    - CHANGELOG*
+    - CREDITS
 nfpms:
-  name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
-  replacements:
-    amd64: 64-bit
-    386: 32-bit
-    darwin: macOS
-    linux: Tux
-  vendor: knqyf263
-  homepage: https://github.com/knqyf263/utern
-  maintainer: Teppei Fukuda <knqyf263@gmail.com>
-  license: MIT
-  formats:
-  - deb
-  - rpm
+  - name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    replacements:
+      amd64: 64-bit
+      386: 32-bit
+      darwin: macOS
+      linux: Tux
+    vendor: knqyf263
+    homepage: https://github.com/knqyf263/utern
+    maintainer: Teppei Fukuda <knqyf263@gmail.com>
+    license: MIT
+    formats:
+    - deb
+    - rpm
 checksum:
   name_template: '{{ .ProjectName }}_{{ .Version }}_checksums.txt'
