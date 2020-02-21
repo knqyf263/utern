@@ -14,7 +14,7 @@ import (
 	"github.com/urfave/cli"
 )
 
-const version = "0.0.6"
+const version = "0.0.7"
 
 var commit string
 

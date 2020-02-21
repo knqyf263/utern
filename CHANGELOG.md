@@ -1,5 +1,8 @@
 # Changelog
 
+## [v0.0.7](https://github.com/knqyf263/utern/compare/v0.0.6...v0.0.7) (2020-02-21)
+
+
 ## [v0.0.6](https://github.com/knqyf263/utern/compare/v0.0.5...v0.0.6) (2020-02-21)
 
 * fix release.yml [#15](https://github.com/knqyf263/utern/pull/15) ([Songmu](https://github.com/Songmu))
