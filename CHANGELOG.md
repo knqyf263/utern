@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.0.6](https://github.com/knqyf263/utern/compare/v0.0.5...v0.0.6) (2020-02-21)
+
+* fix release.yml [#15](https://github.com/knqyf263/utern/pull/15) ([Songmu](https://github.com/Songmu))
+
 ## [v0.0.5](https://github.com/knqyf263/utern/compare/v0.0.4...v0.0.5) (2020-02-20)
 
 * feat: add flags to specify aws profile and usage of MFA [#14](https://github.com/knqyf263/utern/pull/14) ([anzellai](https://github.com/anzellai))
