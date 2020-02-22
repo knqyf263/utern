@@ -1,5 +1,8 @@
 # Changelog
 
+## [v0.0.9](https://github.com/knqyf263/utern/compare/v0.0.8...v0.0.9) (2020-02-22)
+
+
 ## [v0.0.8](https://github.com/knqyf263/utern/compare/v0.0.7...v0.0.8) (2020-02-21)
 
 
