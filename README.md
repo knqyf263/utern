@@ -82,7 +82,7 @@ $ sudo rpm -ivh https://github.com/knqyf263/utern/releases/download/v0.0.1/utern
 Download deb package from [the releases page](https://github.com/knqyf263/utern/releases)
 ```
 $ wget https://github.com/knqyf263/utern/releases/download/v0.0.1/utern_0.0.1_Tux_64-bit.deb
-$ sudo dpkg -i utern_0.0.1_linux_amd64.deb
+$ sudo dpkg -i utern_0.0.1_Tux_64-bit.deb
 ```
 
 # Examples
