@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.1.0](https://github.com/knqyf263/utern/compare/v0.0.9...v0.1.0) (2020-04-07)
+
+* fix README [#19](https://github.com/knqyf263/utern/pull/19) ([d-tsuji](https://github.com/d-tsuji))
+* Consider the case when log stream has no log events [#18](https://github.com/knqyf263/utern/pull/18) ([yutachaos](https://github.com/yutachaos))
+
 ## [v0.0.9](https://github.com/knqyf263/utern/compare/v0.0.8...v0.0.9) (2020-02-22)
 
 
