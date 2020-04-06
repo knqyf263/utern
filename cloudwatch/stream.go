@@ -29,6 +29,13 @@ func (cwl *Client) ListStreams(ctx context.Context, groupName string, since int6
 		hasUpdatedStream := false
 		minLastIngestionTime := int64(math.MaxInt64)
 		for _, stream := range res.LogStreams {
+
+			// If there is no log event in the log stream, FirstEventTimestamp, LastEventTimestamp, LastIngestionTime, and UploadSequenceToken will be nil.
+			// This activity is not officially documented.
+			if stream.FirstEventTimestamp == nil || stream.LastEventTimestamp == nil || stream.LastIngestionTime == nil || stream.UploadSequenceToken == nil {
+				continue
+			}
+
 			if *stream.LastIngestionTime < minLastIngestionTime {
 				minLastIngestionTime = *stream.LastIngestionTime
 			}
@@ -36,7 +43,7 @@ func (cwl *Client) ListStreams(ctx context.Context, groupName string, since int6
 				continue
 			}
 			// Use LastIngestionTime because LastEventTimestamp is updated slowly...
-			if stream.LastIngestionTime == nil || *stream.LastIngestionTime < since {
+			if *stream.LastIngestionTime < since {
 				continue
 			}
 			hasUpdatedStream = true
