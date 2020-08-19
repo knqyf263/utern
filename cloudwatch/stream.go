@@ -19,11 +19,6 @@ type LogStream struct {
 
 // ListStreams lists stream names matching the specified filter
 func (cwl *Client) ListStreams(ctx context.Context, groupName string, since int64) (streams []*LogStream, err error) {
-	// If LogStreamNamePrefix is specified, log streams can not be sorted by LastEventTimestamp.
-	// https://docs.aws.amazon.com/sdk-for-go/api/service/cloudwatchlogs/#DescribeLogStreamsInput
-	if cwl.config.LogStreamNamePrefix != "" {
-		since = 0
-	}
 	streams = []*LogStream{}
 	fn := func(res *cloudwatchlogs.DescribeLogStreamsOutput, lastPage bool) bool {
 		hasUpdatedStream := false
@@ -52,6 +47,8 @@ func (cwl *Client) ListStreams(ctx context.Context, groupName string, since int6
 				LastEventTimestamp: stream.LastIngestionTime,
 			})
 		}
+		// If LogStreamNamePrefix is specified, log streams can not be sorted by LastEventTimestamp.
+		// https://docs.aws.amazon.com/sdk-for-go/api/service/cloudwatchlogs/#DescribeLogStreamsInput
 		if cwl.config.LogStreamNamePrefix != "" {
 			return true
 		}

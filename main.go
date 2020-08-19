@@ -29,12 +29,12 @@ func main() {
 		cli.StringFlag{
 			Name:  "stream, n",
 			Value: "",
-			Usage: "Log stream name (regular expression). Displays all if omitted.",
+			Usage: "Log stream name (regular expression). Displays all if omitted. If the option \"since\" is set to recent time, this option usually makes it faster than the option \"stream-prefix\"",
 		},
 		cli.StringFlag{
 			Name:  "stream-prefix, p",
 			Value: "",
-			Usage: "Log stream name prefix. If a log group contains many log streams, this option makes it faster.",
+			Usage: "Log stream name prefix. If a log group contains many log streams, this option makes it faster.",
 		},
 		cli.StringFlag{
 			Name:  "since, s",
