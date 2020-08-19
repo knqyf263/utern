@@ -29,22 +29,22 @@ func main() {
 		cli.StringFlag{
 			Name:  "stream, n",
 			Value: "",
-			Usage: "Log stream name (regular expression). Displays all if omitted. If the option \"since\" is set to recent time, this option usually makes it faster than the option \"stream-prefix\"",
+			Usage: "Log stream name (regular expression).\n\tDisplays all if omitted. If the option\n\t\"since\" is set to recent time, this option\n\tusually makes it faster than the option\n\t\"stream-prefix\"",
 		},
 		cli.StringFlag{
 			Name:  "stream-prefix, p",
 			Value: "",
-			Usage: "Log stream name prefix. If a log group contains many log streams, this option makes it faster.",
+			Usage: "Log stream name prefix. If a log group\n\tcontains many log streams, this option makes\n\tit faster.",
 		},
 		cli.StringFlag{
 			Name:  "since, s",
 			Value: "5m",
-			Usage: "Return logs newer than a relative duration like 52, 2m, or 3h.",
+			Usage: "Return logs newer than a relative duration\n\tlike 52, 2m, or 3h.",
 		},
 		cli.StringFlag{
 			Name:  "end, e",
 			Value: "",
-			Usage: "Return logs older than a relative duration like 0, 2m, or 3h.",
+			Usage: "Return logs older than a relative duration\n\tlike 0, 2m, or 3h.",
 		},
 		cli.StringFlag{
 			Name:  "profile",
@@ -54,7 +54,7 @@ func main() {
 		cli.StringFlag{
 			Name:  "code",
 			Value: "",
-			Usage: "Specify MFA token code directly (if applicable), instead of using stdin.",
+			Usage: "Specify MFA token code directly\n\t(if applicable), instead of using stdin.",
 		},
 		cli.StringFlag{
 			Name:  "region, r",
@@ -64,7 +64,7 @@ func main() {
 		cli.StringFlag{
 			Name:  "filter",
 			Value: "",
-			Usage: "The filter pattern to use. For more information, see https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html.",
+			Usage: "The filter pattern to use. For more\n\tinformation, see https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html.",
 		},
 		cli.BoolFlag{
 			Name:  "timestamps",

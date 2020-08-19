@@ -167,14 +167,24 @@ COMMANDS:
    help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
-   --stream value, -n value         Log stream name (regular expression). Displays all if omitted. If the option "since" is set to recent time, this option usually makes it faster than the option "stream-prefix"
-   --stream-prefix value, -p value  Log stream name prefix. If a log group contains many log streams, this option makes it faster.
-   --since value, -s value          Return logs newer than a relative duration like 52, 2m, or 3h. (default: "5m")
-   --end value, -e value            Return logs older than a relative duration like 0, 2m, or 3h.
+   --stream value, -n value         Log stream name (regular expression).
+                                    Displays all if omitted. If the option
+                                    "since" is set to recent time, this option
+                                    usually makes it faster than the option
+                                    "stream-prefix"
+   --stream-prefix value, -p value  Log stream name prefix. If a log group
+                                    contains many log streams, this option makes
+                                    it faster.
+   --since value, -s value          Return logs newer than a relative duration
+                                    like 52, 2m, or 3h. (default: "5m")
+   --end value, -e value            Return logs older than a relative duration
+                                    like 0, 2m, or 3h.
    --profile value                  Specify an AWS profile.
-   --code value                     Specify MFA token code directly (if applicable), instead of using stdin.
+   --code value                     Specify MFA token code directly
+                                    (if applicable), instead of using stdin.
    --region value, -r value         Specify an AWS region.
-   --filter value                   The filter pattern to use. For more information, see https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html.
+   --filter value                   The filter pattern to use. For more
+                                    information, see https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html.
    --timestamps                     Print timestamps
    --event-id                       Print event ID
    --no-log-group                   Suppress display of log group name
