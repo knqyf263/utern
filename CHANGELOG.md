@@ -1,5 +1,8 @@
 # Changelog
 
+## [v0.1.1](https://github.com/knqyf263/utern/compare/v0.1.0...v0.1.1) (2020-09-10)
+* Improve performance when --since and --stream-prefix are specified [#23](https://github.com/knqyf263/utern/pull/23) ([abicky](https://github.com/abicky))
+
 ## [v0.1.0](https://github.com/knqyf263/utern/compare/v0.0.9...v0.1.0) (2020-04-07)
 
 * fix README [#19](https://github.com/knqyf263/utern/pull/19) ([d-tsuji](https://github.com/d-tsuji))
