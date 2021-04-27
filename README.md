@@ -51,7 +51,9 @@ The log-group-query is a regular expression so you could provide "web-\w" to tai
 ## From source
 
 ```console
-$ go get -u github.com/knqyf263/utern
+$ git clone https://github.com/knqyf263/utern.git
+$ cd utern
+$ go install
 ```
 
 ## Binary (Including Windows)
