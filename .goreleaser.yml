@@ -4,9 +4,11 @@ release:
     name: utern
   name_template: '{{.Tag}}'
 brews:
-  - github:
+  - name: utern
+    tap:
       owner: knqyf263
       name: homebrew-utern
+      token: "{{ .Env.GITHUB_TOKEN }}"
     commit_author:
       name: goreleaserbot
       email: goreleaser@carlosbecker.com
