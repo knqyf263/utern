@@ -39,7 +39,7 @@ func (c *EventCache) Load(logGroupName string, key *string) (ok bool) {
 		return false
 	}
 	cache := v.(map[string]*int64)
-	_, ok = cache[logGroupName]
+	_, ok = cache[*key]
 	return ok
 }
 
