@@ -26,6 +26,10 @@ builds:
   goarch:
   - amd64
   - "386"
+  - arm
+  - arm64
+  goarm:
+  - 7
   main: .
   ldflags:
   - -s -w
@@ -44,6 +48,8 @@ nfpms:
     replacements:
       amd64: 64-bit
       386: 32-bit
+      arm: ARM
+      arm64: ARM64
       darwin: macOS
       linux: Tux
     vendor: knqyf263
