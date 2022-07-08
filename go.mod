@@ -8,7 +8,6 @@ require (
 	github.com/mattn/go-colorable v0.1.4 // indirect
 	github.com/mattn/go-isatty v0.0.10 // indirect
 	github.com/pkg/errors v0.9.1
-	github.com/stretchr/testify v1.3.0 // indirect
 	github.com/urfave/cli v1.22.1
 	golang.org/x/sys v0.0.0-20191115151921-52ab43148777 // indirect
 )
