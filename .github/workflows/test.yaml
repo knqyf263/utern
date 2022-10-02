@@ -15,9 +15,9 @@ jobs:
         - windows-latest
     steps:
     - name: setup go
-      uses: actions/setup-go@v1
+      uses: actions/setup-go@v3
       with:
-        go-version: 1.x
+        go-version: 1.19.x
     - name: checkout
       uses: actions/checkout@v1
       with:
